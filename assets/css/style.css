@@ -1,57 +1,27 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Efeito neon mais suave nos títulos */
+h1, h2, h3 {
+  text-shadow: 0 0 3px #39ff14, 0 0 6px #0f0;
 }
 
-/* Corpo do site */
-body {
-  background-color: #000;
-  color: #39ff14;
-  font-family: 'Courier New', monospace;
-  line-height: 1.6;
+/* Background das listas e cards */
+li {
+  background: rgba(0, 255, 20, 0.03); /* antes era 0.05 */
+  border-left: 3px solid #39ff14;
 }
 
-/* Links */
-a {
-  color: #39ff14;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+li:hover {
+  background: rgba(0, 255, 20, 0.1); /* antes era 0.2 */
+  border-left: 3px solid #0f0;
 }
 
-a:hover {
-  color: #0f0;
-  text-shadow: 0 0 10px #0f0;
+.card {
+  border: 1px solid #39ff14;
 }
 
-/* Cabeçalho */
-header {
-  padding: 30px 20px;
-  text-align: center;
-  border-bottom: 1px solid #39ff14;
-  margin-bottom: 40px;
+.card:hover {
+  box-shadow: 0 0 10px #0f0; /* antes era 20px */
 }
 
-header h1 {
-  font-size: 2.5rem;
-}
-
-header .subtitle {
-  font-size: 1.1rem;
-  color: #0f0;
-  margin-top: 10px;
-}
-
-/* Main / conteúdo */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Seções */
-section {
   margin-bottom: 40px;
 }
 
