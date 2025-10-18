@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cursor = document.createElement("span");
   cursor.textContent = "|";
   cursor.style.marginLeft = "2px";
-  cursor.style.color = "#39ff14";
+  cursor.style.color = "#0f0"; // verde neon suave
   typed.appendChild(cursor);
 
   function type() {
