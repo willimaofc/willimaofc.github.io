@@ -1,24 +1,47 @@
-// Simple typing effect for the title (configurable, lightweight)
-(function(){
-  const el = document.getElementById('typed');
-  if(!el) return;
-  const text = el.dataset.text || el.textContent || 'Portfolio';
-  const speed = 40; // ms per char
-  let i = 0;
-  el.textContent = '';
-  const cursor = document.createElement('span');
-  cursor.className = 'cursor';
-  el.parentNode.insertBefore(cursor, el.nextSibling);
-  function type(){
-    if(i<=text.length){
-      el.textContent = text.slice(0,i);
-      i++;
-      setTimeout(type, speed);
+// Função de digitação com cursor piscando
+document.addEventListener("DOMContentLoaded", () => {
+  const typed = document.getElementById("typed");
+  if (!typed) return;
+
+  const text = typed.dataset.text;
+  let index = 0;
+  let cursorVisible = true;
+
+  // Criar o cursor
+  const cursor = document.createElement("span");
+  cursor.textContent = "|";
+  cursor.style.marginLeft = "2px";
+  cursor.style.color = "#39ff14";
+  typed.appendChild(cursor);
+
+  function type() {
+    typed.innerHTML = text.slice(0, index);
+    typed.appendChild(cursor);
+    if (index < text.length) {
+      index++;
+      setTimeout(type, 100); // velocidade de digitação
     } else {
-      // keep cursor blinking
+      setTimeout(erase, 3000); // espera antes de apagar
     }
   }
-  document.addEventListener('DOMContentLoaded', type);
-  // If DOMContentLoaded already fired
-  if (document.readyState === 'interactive' || document.readyState === 'complete') type();
-})();
+
+  function erase() {
+    typed.innerHTML = text.slice(0, index);
+    typed.appendChild(cursor);
+    if (index > 0) {
+      index--;
+      setTimeout(erase, 50); // velocidade de apagar
+    } else {
+      setTimeout(type, 500); // espera antes de digitar novamente
+    }
+  }
+
+  // Piscar o cursor
+  setInterval(() => {
+    cursor.style.visibility = cursorVisible ? "hidden" : "visible";
+    cursorVisible = !cursorVisible;
+  }, 500);
+
+  // Começa a digitar
+  type();
+});
