@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Wilton Lima — Cybersecurity Portfolio
+title: "Wilton Lima — Cybersecurity Portfolio"
 ---
 
 <div class="hero">
@@ -12,8 +12,16 @@ title: Wilton Lima — Cybersecurity Portfolio
 ## Post inicial
 _Como usei o LinPEAS para encontrar vulnerabilidades_ — confira o post e o projeto exemplo abaixo.
 
-- [Como usei o LinPEAS para encontrar vulnerabilidades](/_posts/2025-10-18-how-i-used-linpeas.md)
-- [CTF: Privilege Escalation](/_projects/ctf-privilege-escalation.md)
+### Posts recentes
+<ul>
+{% for post in site.posts %}
+  <li><a href="{{ post.url }}">{{ post.title }}</a> — <small>{{ post.date | date: "%-d %b %Y" }}</small></li>
+{% endfor %}
+</ul>
+
+### Meus Projetos
+<p><a href="/projects.html">Ver todos os projetos</a></p>
+
 </section>
 
 <script src="/assets/js/typing.js"></script>
