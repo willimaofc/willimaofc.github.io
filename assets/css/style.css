@@ -1,19 +1,103 @@
-:root{
-  --bg:#000;
-  --neon:#39ff14;
-  --muted:#0f0f0f;
-  --glass: rgba(255,255,255,0.03);
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html,body{height:100%;margin:0;background:var(--bg);color:#cfcfcf;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;}
-.wrap{max-width:900px;margin:6vh auto;padding:2rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.7);}
-.hero{text-align:left;padding:1rem 0;}
-#typed{font-size:1.9rem;color:var(--neon);white-space:nowrap;overflow:hidden;}
-.subtitle{color:var(--neon);opacity:0.8;margin-top:0.5rem;font-size:0.95rem;}
-.content{margin-top:2rem;line-height:1.6;}
-a{color:var(--neon);text-decoration:none;border-bottom:1px dashed rgba(57,255,20,0.18);}
-pre{background:#07110a;padding:1rem;border-radius:8px;overflow:auto;}
-.terminal{background:#020202;border-radius:8px;padding:1rem;color:#b8ffb8;box-shadow: inset 0 0 30px rgba(57,255,20,0.02);font-family:inherit;}
-.footer{color:#666;text-align:center;margin:2rem 0 1rem 0;font-size:0.85rem;}
-/* cursor */
-.cursor{display:inline-block;width:8px;height:1.1em;background:var(--neon);margin-left:6px;animation:blink 1s steps(2, start) infinite;}
-@keyframes blink{50%{opacity:0}}
+
+/* Corpo do site */
+body {
+  background-color: #000;
+  color: #39ff14;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: #39ff14;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+}
+
+/* Cabeçalho */
+header {
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid #39ff14;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+header .subtitle {
+  font-size: 1.1rem;
+  color: #0f0;
+  margin-top: 10px;
+}
+
+/* Main / conteúdo */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Seções */
+section {
+  margin-bottom: 40px;
+}
+
+/* Listas de posts/projetos */
+ul {
+  list-style-type: none;
+}
+
+li {
+  background: rgba(0, 255, 20, 0.05);
+  border-left: 3px solid #39ff14;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background: rgba(0, 255, 20, 0.2);
+  border-left: 3px solid #0f0;
+  transform: translateX(5px);
+}
+
+/* Boxes de posts/projetos */
+.card {
+  border: 1px solid #39ff14;
+  padding: 20px;
+  margin-bottom: 25px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px #0f0;
+  transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #39ff14;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #0f0;
+}
+
+/* Efeito neon no título */
+h1, h2, h3 {
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #0f0;
+}
