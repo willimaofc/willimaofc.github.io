@@ -1,0 +1,10 @@
+title: "Wilton Lima — Cybersecurity Portfolio"
+email: ""
+description: "Portfólio técnico de Wilton Lima — pentesting, CTFs e posts técnicos."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://willimaofc.github.io" # the base hostname & protocol for your site
+theme: minima
+plugins: []
+markdown: kramdown
+kramdown:
+  input: GFM

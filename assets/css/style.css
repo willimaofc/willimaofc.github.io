@@ -1,0 +1,19 @@
+:root{
+  --bg:#000;
+  --neon:#39ff14;
+  --muted:#0f0f0f;
+  --glass: rgba(255,255,255,0.03);
+}
+html,body{height:100%;margin:0;background:var(--bg);color:#cfcfcf;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;}
+.wrap{max-width:900px;margin:6vh auto;padding:2rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.7);}
+.hero{text-align:left;padding:1rem 0;}
+#typed{font-size:1.9rem;color:var(--neon);white-space:nowrap;overflow:hidden;}
+.subtitle{color:var(--neon);opacity:0.8;margin-top:0.5rem;font-size:0.95rem;}
+.content{margin-top:2rem;line-height:1.6;}
+a{color:var(--neon);text-decoration:none;border-bottom:1px dashed rgba(57,255,20,0.18);}
+pre{background:#07110a;padding:1rem;border-radius:8px;overflow:auto;}
+.terminal{background:#020202;border-radius:8px;padding:1rem;color:#b8ffb8;box-shadow: inset 0 0 30px rgba(57,255,20,0.02);font-family:inherit;}
+.footer{color:#666;text-align:center;margin:2rem 0 1rem 0;font-size:0.85rem;}
+/* cursor */
+.cursor{display:inline-block;width:8px;height:1.1em;background:var(--neon);margin-left:6px;animation:blink 1s steps(2, start) infinite;}
+@keyframes blink{50%{opacity:0}}
