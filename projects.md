@@ -1,10 +1,17 @@
 ---
 layout: default
-title: Projetos
+title: "Meus Projetos"
+subtitle: "Lista completa de projetos de segurança, pentesting e CTFs"
 ---
 
-## Meus projetos
-
-{% for project in site.projects %}
-- [{{ project.title }}]({{ project.url }})
-{% endfor %}
+<section>
+  <h2>Projetos</h2>
+  {% for project in site.projects %}
+  <div class="card">
+    <h3><a href="{{ project.url }}">{{ project.title }}</a></h3>
+    {% if project.description %}
+    <p>{{ project.description }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
