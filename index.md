@@ -1,26 +1,41 @@
 ---
 layout: default
 title: "Wilton Lima — Cybersecurity Portfolio"
+subtitle: "Segurança da informação · Pentesting · CTF · Privilege Escalation"
 ---
 
 <div class="hero">
-  <h1 id="typed" data-text="Wilton Lima — Cybersecurity Portfolio"></h1>
-  <p class="subtitle">Segurança da informação · Pentesting · CTF · Privilege Escalation</p>
+  <h1 id="typed" data-text="{{ page.title }}"></h1>
+  <p class="subtitle">{{ page.subtitle }}</p>
 </div>
 
-<section class="content">
-## Post inicial
-_Como usei o LinPEAS para encontrar vulnerabilidades_ — confira o post e o projeto exemplo abaixo.
+<section>
+  <h2>Posts Recentes</h2>
+  {% for post in site.posts %}
+  <div class="card">
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <small>{{ post.date | date: "%-d %b %Y" }}</small>
+    {% if post.excerpt %}
+    <p>{{ post.excerpt }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
 
-### Posts recentes
-<ul>
-{% for post in site.posts %}
-  <li><a href="{{ post.url }}">{{ post.title }}</a> — <small>{{ post.date | date: "%-d %b %Y" }}</small></li>
-{% endfor %}
-</ul>
+<section>
+  <h2>Meus Projetos</h2>
+  {% for project in site.projects %}
+  <div class="card">
+    <h3><a href="{{ project.url }}">{{ project.title }}</a></h3>
+    {% if project.description %}
+    <p>{{ project.description }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <p><a href="/projects.html">Ver todos os projetos</a></p>
+</section>
 
-### Meus Projetos
-<p><a href="/projects.html">Ver todos os projetos</a></p>
+<script src="/assets/js/typing.js"></script>
 
 </section>
 
