@@ -8,7 +8,7 @@ plugins: []
 markdown: kramdown
 kramdown:
   input: GFM
-
 collections:
   projects:
     output: true
+layout: project
