@@ -1,11 +1,11 @@
-/* ========== core reset ========== */
+/* ========== core reset & base ========== */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;background:#050505;color:#bfecc9;}
+html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;background:#050505;color:#cfeed4;}
 
-/* ========== matrix canvas fills the background ========== */
+/* matrix canvas */
 #matrix{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;opacity:0.12;pointer-events:none}
 
-/* ========== header ========== */
+/* header */
 .site-header{
   position:fixed;top:0;left:0;right:0;height:72px;z-index:40;
   backdrop-filter: blur(6px);
@@ -14,13 +14,13 @@ html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, 
 }
 .header-inner{max-width:1200px;margin:0 auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
 .brand{display:flex;gap:12px;align-items:center}
-.logo-box{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#2b2b2b,#111);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0f0;border:1px solid rgba(57,255,20,0.12)}
-.site-title{font-size:1.05rem;color:#e6ffea;letter-spacing:0.5px}
-.site-sub{font-size:0.78rem;color:#9fd9a8;opacity:0.95;margin-top:2px}
+.logo-box{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#1a1a1a,#0b0b0b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#9fe0a8;border:1px solid rgba(57,255,20,0.12)}
+.site-title{font-size:1rem;color:#e9fff0;letter-spacing:0.3px}
+.site-sub{font-size:0.78rem;color:#99cfa5;opacity:0.95;margin-top:2px}
 .header-nav a{color:#bfecc9;margin-left:18px;text-decoration:none;padding:8px;border-radius:6px;transition:all .18s ease}
-.header-nav a:hover{background:rgba(15,240,0,0.05);box-shadow:0 0 12px rgba(15,240,0,0.06);color:#eaffee}
+.header-nav a:hover{background:rgba(15,240,0,0.05);box-shadow:0 0 12px rgba(15,240,0,0.04);color:#eaffee}
 
-/* ========== main layout ========== */
+/* layout */
 .container{position:relative;z-index:10;display:grid;grid-template-columns:240px 1fr;gap:28px;max-width:1200px;margin:110px auto;padding:0 20px}
 .left-panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));border-radius:10px;padding:18px;border:1px solid rgba(57,255,20,0.03);backdrop-filter: blur(4px)}
 .panel-title{font-size:.78rem;color:#9fd9a8;margin-bottom:10px}
@@ -29,7 +29,10 @@ html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, 
 .quick-list li:hover{background:rgba(57,255,20,0.03);transform:translateX(6px)}
 .quick-list a{color:inherit;text-decoration:none}
 
-/* ========== terminal shell ========== */
+/* social compact */
+.social-compact a{display:inline-block;margin-right:8px;color:#bfecc9;text-decoration:none;font-size:0.9rem}
+
+/* terminal shell */
 .terminal-shell{border-radius:10px;overflow:hidden;border:1px solid rgba(57,255,20,0.06);background:linear-gradient(180deg, rgba(0,0,0,0.65), rgba(8,8,8,0.85));box-shadow:0 10px 40px rgba(0,0,0,0.6)}
 .terminal-top{display:flex;align-items:center;gap:12px;padding:10px 14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border-bottom:1px solid rgba(255,255,255,0.02)}
 .dots{display:flex;gap:6px}
@@ -41,7 +44,7 @@ html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, 
 
 /* terminal body */
 .terminal-body{padding:18px;min-height:360px}
-.prompt{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.prompt{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
 .prompt-user{color:#9fe0a8;font-weight:700}
 .prompt-pipe{color:#7f7f7f}
 .prompt-path{color:#bfecc9}
@@ -52,7 +55,7 @@ html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, 
 .cmd-output{margin:8px 0;padding:10px;border-radius:6px;background:rgba(0,0,0,0.25);border:1px solid rgba(57,255,20,0.03);color:#dffbe6;opacity:1;transition:opacity .6s ease}
 .cmd-output.faded{opacity:0.15}
 
-/* page content styling */
+/* page content */
 .page-content{margin-top:10px}
 .card{border-radius:8px;padding:16px;margin-bottom:18px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));border:1px solid rgba(57,255,20,0.04);position:relative;overflow:hidden;transition:transform .24s ease, box-shadow .24s ease}
 .card::after{
@@ -63,71 +66,33 @@ html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, 
   transition:transform .9s cubic-bezier(.2,.8,.2,1);
   pointer-events:none;
 }
-.card:hover::after{transform:skewX(-18deg) translateX(30%)} /* scan effect */
+.card:hover::after{transform:skewX(-18deg) translateX(30%)}
+
+/* scan-line subtle */
+.card::before{
+  content:"";
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  background:repeating-linear-gradient(0deg, rgba(57,255,20,0.01) 0px, rgba(57,255,20,0.01) 1px, transparent 2px);
+  mix-blend-mode:overlay;pointer-events:none;opacity:0.65
+}
 .card h3{margin:0 0 8px 0;color:#eaffee}
 .card p{margin:0;color:#cfead3}
-
-/* subtle glowing on hover */
 .card:hover{box-shadow:0 6px 30px rgba(15,240,0,0.06);transform:translateY(-6px)}
 
 /* footer */
 .site-footer{max-width:1200px;margin:40px auto 80px auto;text-align:center;color:#99cfa5;opacity:.9}
 
-/* responsive */
+/* small utilities */
+.type-cursor{margin-left:6px;color:#9fd9a8}
 @media (max-width:900px){
   .container{grid-template-columns:1fr;padding:20px;margin-top:90px}
   .left-panel{display:none}
   .header-inner{padding:0 12px}
-
-  /* --- Redes sociais estilo hacker --- */
-.social-links {
-  margin-top: 40px;
-  text-align: center;
 }
 
-.social-links a {
-  color: #39ff14;
-  border: 1px solid #39ff14;
-  padding: 10px 18px;
-  margin: 0 8px;
-  border-radius: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Efeito de brilho suave e animação hacker */
-.social-links a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: rgba(57, 255, 20, 0.2);
-  transform: skewX(-25deg);
-  transition: 0.5s;
-}
-
-.social-links a:hover::before {
-  left: 125%;
-}
-
-.social-links a:hover {
-  background-color: #111;
-  color: #0f0;
-  box-shadow: 0 0 10px #39ff14, 0 0 20px #0f0 inset;
-  transform: translateY(-3px);
-}
-
-/* Cores específicas por rede (opcional) */
-.social.github:hover { color: #6cc644; border-color: #6cc644; }
-.social.linkedin:hover { color: #0a66c2; border-color: #0a66c2; }
-.social.tryhackme:hover { color: #ff0000; border-color: #ff0000; }
-.social.instagram:hover { color: #9aff00; border-color: #9aff00; }
+/* --- Social buttons (if you add a socials block) --- */
+.social-links {margin-top:24px;text-align:center}
+.social-links a{color:#bfecc9;border:1px solid rgba(57,255,20,0.06);padding:8px 12px;margin:0 6px;border-radius:7px;text-decoration:none;display:inline-block;transition:all .25s ease}
+.social-links a:hover{box-shadow:0 0 10px rgba(15,240,0,0.05);transform:translateY(-3px)}
 
 }
