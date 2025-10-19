@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       i++;
       setTimeout(type, 60 + Math.random()*40);
     } else {
-      // keep cursor blinking
       setInterval(()=>{ cursor.style.opacity = cursor.style.opacity === '1' ? '0.12' : '1'; }, 600);
     }
   }
