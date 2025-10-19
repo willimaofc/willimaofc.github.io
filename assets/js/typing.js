@@ -1,47 +1,28 @@
-// Função de digitação com cursor piscando
+// typing.js - smooth typing for header (non-blocking)
 document.addEventListener("DOMContentLoaded", () => {
-  const typed = document.getElementById("typed");
-  if (!typed) return;
+  const el = document.getElementById('typed');
+  if (!el) return;
+  const text = el.dataset.text || el.textContent || 'Wilton Lima — Cybersecurity Portfolio';
+  let i = 0;
+  el.textContent = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'type-cursor';
+  cursor.textContent = '┃';
+  cursor.style.color = '#9fd9a8';
+  cursor.style.marginLeft = '6px';
+  cursor.style.opacity = '1';
+  el.appendChild(cursor);
 
-  const text = typed.dataset.text;
-  let index = 0;
-  let cursorVisible = true;
-
-  // Criar o cursor
-  const cursor = document.createElement("span");
-  cursor.textContent = "|";
-  cursor.style.marginLeft = "2px";
-  cursor.style.color = "#0f0"; // verde neon suave
-  typed.appendChild(cursor);
-
-  function type() {
-    typed.innerHTML = text.slice(0, index);
-    typed.appendChild(cursor);
-    if (index < text.length) {
-      index++;
-      setTimeout(type, 100); // velocidade de digitação
+  function type(){
+    if (i <= text.length){
+      el.textContent = text.slice(0,i);
+      el.appendChild(cursor);
+      i++;
+      setTimeout(type, 60 + Math.random()*40);
     } else {
-      setTimeout(erase, 3000); // espera antes de apagar
+      // keep cursor blinking
+      setInterval(()=>{ cursor.style.opacity = cursor.style.opacity === '1' ? '0.12' : '1'; }, 600);
     }
   }
-
-  function erase() {
-    typed.innerHTML = text.slice(0, index);
-    typed.appendChild(cursor);
-    if (index > 0) {
-      index--;
-      setTimeout(erase, 50); // velocidade de apagar
-    } else {
-      setTimeout(type, 500); // espera antes de digitar novamente
-    }
-  }
-
-  // Piscar o cursor
-  setInterval(() => {
-    cursor.style.visibility = cursorVisible ? "hidden" : "visible";
-    cursorVisible = !cursorVisible;
-  }, 500);
-
-  // Começa a digitar
   type();
 });
