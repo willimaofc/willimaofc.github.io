@@ -1,103 +1,81 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ========== core reset ========== */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;background:#050505;color:#bfecc9;}
 
-/* Corpo do site */
-body {
-  background-color: #000;
-  color: #39ff14;
-  font-family: 'Courier New', monospace;
-  line-height: 1.6;
-}
+/* ========== matrix canvas fills the background ========== */
+#matrix{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;opacity:0.12;pointer-events:none}
 
-/* Links */
-a {
-  color: #39ff14;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+/* ========== header ========== */
+.site-header{
+  position:fixed;top:0;left:0;right:0;height:72px;z-index:40;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15));
+  border-bottom: 1px solid rgba(57,255,20,0.05);
 }
+.header-inner{max-width:1200px;margin:0 auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo-box{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,#2b2b2b,#111);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0f0;border:1px solid rgba(57,255,20,0.12)}
+.site-title{font-size:1.05rem;color:#e6ffea;letter-spacing:0.5px}
+.site-sub{font-size:0.78rem;color:#9fd9a8;opacity:0.95;margin-top:2px}
+.header-nav a{color:#bfecc9;margin-left:18px;text-decoration:none;padding:8px;border-radius:6px;transition:all .18s ease}
+.header-nav a:hover{background:rgba(15,240,0,0.05);box-shadow:0 0 12px rgba(15,240,0,0.06);color:#eaffee}
 
-a:hover {
-  color: #0f0;
-  text-shadow: 0 0 5px #0f0;
+/* ========== main layout ========== */
+.container{position:relative;z-index:10;display:grid;grid-template-columns:240px 1fr;gap:28px;max-width:1200px;margin:110px auto;padding:0 20px}
+.left-panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));border-radius:10px;padding:18px;border:1px solid rgba(57,255,20,0.03);backdrop-filter: blur(4px)}
+.panel-title{font-size:.78rem;color:#9fd9a8;margin-bottom:10px}
+.quick-list{list-style:none;padding:0;margin:0}
+.quick-list li{padding:8px 6px;border-radius:6px;color:#cfead3;margin-bottom:6px;transition:all .18s ease}
+.quick-list li:hover{background:rgba(57,255,20,0.03);transform:translateX(6px)}
+.quick-list a{color:inherit;text-decoration:none}
+
+/* ========== terminal shell ========== */
+.terminal-shell{border-radius:10px;overflow:hidden;border:1px solid rgba(57,255,20,0.06);background:linear-gradient(180deg, rgba(0,0,0,0.65), rgba(8,8,8,0.85));box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+.terminal-top{display:flex;align-items:center;gap:12px;padding:10px 14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border-bottom:1px solid rgba(255,255,255,0.02)}
+.dots{display:flex;gap:6px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;opacity:.95}
+.dot.red{background:#ff6b6b}
+.dot.yellow{background:#ffd166}
+.dot.green{background:#6bff8a}
+.terminal-title{margin-left:8px;color:#c6f7d1;font-weight:600}
+
+/* terminal body */
+.terminal-body{padding:18px;min-height:360px}
+.prompt{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.prompt-user{color:#9fe0a8;font-weight:700}
+.prompt-pipe{color:#7f7f7f}
+.prompt-path{color:#bfecc9}
+.fake-cmd{flex:1;background:transparent;border:none;border-bottom:1px dashed rgba(57,255,20,0.06);color:#dffbe6;padding:6px 8px;outline:none;font-family:inherit}
+.fake-cmd::placeholder{color:#7e9b7a}
+
+/* command output (transient) */
+.cmd-output{margin:8px 0;padding:10px;border-radius:6px;background:rgba(0,0,0,0.25);border:1px solid rgba(57,255,20,0.03);color:#dffbe6;opacity:1;transition:opacity .6s ease}
+.cmd-output.faded{opacity:0.15}
+
+/* page content styling */
+.page-content{margin-top:10px}
+.card{border-radius:8px;padding:16px;margin-bottom:18px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));border:1px solid rgba(57,255,20,0.04);position:relative;overflow:hidden;transition:transform .24s ease, box-shadow .24s ease}
+.card::after{
+  content:"";
+  position:absolute;left:-50%;top:0;width:120%;height:100%;
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(57,255,20,0.045), rgba(255,255,255,0.02));
+  transform:skewX(-18deg) translateX(-120%);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+  pointer-events:none;
 }
+.card:hover::after{transform:skewX(-18deg) translateX(30%)} /* scan effect */
+.card h3{margin:0 0 8px 0;color:#eaffee}
+.card p{margin:0;color:#cfead3}
 
-/* Cabeçalho */
-header {
-  padding: 30px 20px;
-  text-align: center;
-  border-bottom: 1px solid #39ff14;
-  margin-bottom: 40px;
-}
+/* subtle glowing on hover */
+.card:hover{box-shadow:0 6px 30px rgba(15,240,0,0.06);transform:translateY(-6px)}
 
-header h1 {
-  font-size: 2.5rem;
-}
+/* footer */
+.site-footer{max-width:1200px;margin:40px auto 80px auto;text-align:center;color:#99cfa5;opacity:.9}
 
-header .subtitle {
-  font-size: 1.1rem;
-  color: #0f0;
-  margin-top: 10px;
-}
-
-/* Main / conteúdo */
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Seções */
-section {
-  margin-bottom: 40px;
-}
-
-/* Listas de posts/projetos */
-ul {
-  list-style-type: none;
-}
-
-li {
-  background: rgba(0, 255, 20, 0.03);
-  border-left: 3px solid #39ff14;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
-
-li:hover {
-  background: rgba(0, 255, 20, 0.1);
-  border-left: 3px solid #0f0;
-  transform: translateX(5px);
-}
-
-/* Boxes de posts/projetos */
-.card {
-  border: 1px solid #39ff14;
-  padding: 20px;
-  margin-bottom: 25px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 0 10px #0f0;
-  transform: translateY(-5px);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid #39ff14;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #0f0;
-}
-
-/* Efeito neon mais suave nos títulos */
-h1, h2, h3 {
-  text-shadow: 0 0 3px #39ff14, 0 0 6px #0f0;
+/* responsive */
+@media (max-width:900px){
+  .container{grid-template-columns:1fr;padding:20px;margin-top:90px}
+  .left-panel{display:none}
+  .header-inner{padding:0 12px}
 }
