@@ -1,83 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <style>
-    body {
-      background-color: #000;
-      color: #39ff14;
-      font-family: 'Courier New', monospace;
-      margin: 0;
-      padding: 0;
-    }
-    a { color: #39ff14; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #39ff14;
-    }
-    header h1 {
-      font-size: 2.2rem;
-    }
-    header .subtitle {
-      font-size: 1rem;
-      color: #0f0;
-      margin-top: 5px;
-    }
-    main {
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      border-top: 1px solid #39ff14;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #0f0;
-    }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-    .hero {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-  </style>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="theme-color" content="#000000" />
 </head>
 <body>
-  <header>
-    <h1 id="typed" data-text="{{ page.title }}"></h1>
-    {% if page.subtitle %}
-    <p class="subtitle">{{ page.subtitle }}</p>
-    {% endif %}
+  <!-- fundo animado matrix -->
+  <canvas id="matrix"></canvas>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="logo-box">WL</span>
+        <div>
+          <div class="site-title" id="typed" data-text="{{ site.title | default: 'Wilton Lima — Cybersecurity Portfolio' }}"></div>
+          {% if page.subtitle %}
+          <div class="site-sub">{{ page.subtitle }}</div>
+          {% else %}
+          <div class="site-sub">Red Team · Pentesting · CTF · Privilege Escalation</div>
+          {% endif %}
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="/">Home</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    {{ content }}
+  <main class="container">
+    <aside class="left-panel">
+      <div class="panel-title">Quick</div>
+      <ul class="quick-list">
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/_posts/">Posts</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+
+      <div class="panel-title">Tools</div>
+      <ul class="quick-list">
+        <li>LinPEAS</li>
+        <li>nmap</li>
+        <li>sudo -l</li>
+      </ul>
+    </aside>
+
+    <section class="content-panel">
+      <!-- painel estilo terminal que engloba o conteúdo -->
+      <div class="terminal-shell">
+        <div class="terminal-top">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">wilton@portfolio: ~</div>
+        </div>
+
+        <div class="terminal-body">
+          <!-- prompt interativo só visual -->
+          <div class="prompt">
+            <span class="prompt-user">wilton@local</span>
+            <span class="prompt-pipe">:</span>
+            <span class="prompt-path">~$</span>
+            <input id="fake-cmd" class="fake-cmd" placeholder="type 'help' to view tips" aria-label="Terminal input (visual)" />
+          </div>
+
+          <!-- page content -->
+          <article class="page-content">
+            {{ content }}
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    © 2025 Wilton Lima — Cybersecurity Portfolio
+  <footer class="site-footer">
+    © {{ "now" | date: "%Y" }} Wilton Lima — <small>Red Team / Pentesting</small>
   </footer>
 
   <script src="/assets/js/typing.js"></script>
+  <script src="/assets/js/matrix.js"></script>
   <script>
-    // Script simples de digitação
-    const typed = document.getElementById('typed');
-    if (typed) {
-      const text = typed.dataset.text;
-      let index = 0;
-      function type() {
-        typed.innerHTML = text.slice(0, index++);
-        if (index <= text.length) setTimeout(type, 100);
-        else setTimeout(()=>{ index=0; type(); }, 3000); // reinicia
-      }
-      type();
+    // comportamento do input falso: mostra mensagem temporária ao "executar"
+    const fake = document.getElementById('fake-cmd');
+    if (fake) {
+      fake.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const v = fake.value.trim();
+          const out = document.createElement('div');
+          out.className = 'cmd-output';
+          out.innerText = v ? `Command not executed (visual demo): ${v}` : 'Pressione algo...';
+          document.querySelector('.terminal-body').insertBefore(out, document.querySelector('.page-content'));
+          fake.value = '';
+          setTimeout(()=> out.classList.add('faded'), 3000);
+        }
+      });
     }
   </script>
 </body>
