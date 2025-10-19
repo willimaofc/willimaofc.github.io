@@ -45,6 +45,6 @@ subtitle: "Segurança da informação · Pentesting · CTF · Privilege Escalati
   <a href="https://github.com/willimaofc" target="_blank" class="social github">GitHub</a>
   <a href="https://linkedin.com/in/wil-limaofc" target="_blank" class="social linkedin">LinkedIn</a>
   <a href="https://tryhackme.com/p/willimaofc" target="_blank" class="social tryhackme">TryHackMe</a>
-  <a href="https://instagram.com/wil_limaofc" target="_blank" class="social instagram">Hack The Box</a>
+  <a href="https://instagram.com/wil_limaofc" target="_blank" class="social instagram">Instagram</a>
 </div>
 
