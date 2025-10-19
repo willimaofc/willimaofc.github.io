@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ page.title }}</title>
-
   <link rel="stylesheet" href="/assets/css/style.css" />
   <meta name="theme-color" content="#000000" />
 </head>
@@ -15,20 +14,21 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <span class="logo-box">WL</span>
+        <span class="logo-box">WIL</span>
         <div>
           <div class="site-title" id="typed" data-text="{{ site.title | default: 'Wilton Lima — Cybersecurity Portfolio' }}"></div>
           {% if page.subtitle %}
           <div class="site-sub">{{ page.subtitle }}</div>
           {% else %}
-          <div class="site-sub">Red Team · Pentesting · CTF · Privilege Escalation</div>
+          <div class="site-sub">Red Team | Cybersecurity | Support Technician | Osint</div>
           {% endif %}
         </div>
       </div>
+
       <nav class="header-nav">
         <a href="/">Home</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/about.html">About</a>
+        <a href="/projects.html">Projetos</a>
+        <a href="/about.html">Sobre</a>
       </nav>
     </div>
   </header>
@@ -38,8 +38,8 @@
       <div class="panel-title">Quick</div>
       <ul class="quick-list">
         <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/_posts/">Posts</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/blog.html">Posts</a></li>
+        <li><a href="/about.html">About</a></li>
       </ul>
 
       <div class="panel-title">Tools</div>
@@ -48,10 +48,17 @@
         <li>nmap</li>
         <li>sudo -l</li>
       </ul>
+
+      <div class="panel-title">Social</div>
+      <div class="social-compact">
+        <a href="https://github.com/willimaofc" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/willimaofc" target="_blank">LinkedIn</a>
+        <a href="https://tryhackme.com/p/willimaofc" target="_blank">TryHackMe</a>
+        <a href="https://instagram.com/wil_limaofc" target="_blank">Instagram</a>
+      </div>
     </aside>
 
     <section class="content-panel">
-      <!-- painel estilo terminal que engloba o conteúdo -->
       <div class="terminal-shell">
         <div class="terminal-top">
           <div class="dots">
@@ -63,15 +70,13 @@
         </div>
 
         <div class="terminal-body">
-          <!-- prompt interativo só visual -->
           <div class="prompt">
-            <span class="prompt-user">wilton@local</span>
+            <span class="prompt-user">wilton@0x57</span>
             <span class="prompt-pipe">:</span>
             <span class="prompt-path">~$</span>
             <input id="fake-cmd" class="fake-cmd" placeholder="type 'help' to view tips" aria-label="Terminal input (visual)" />
           </div>
 
-          <!-- page content -->
           <article class="page-content">
             {{ content }}
           </article>
@@ -86,8 +91,9 @@
 
   <script src="/assets/js/typing.js"></script>
   <script src="/assets/js/matrix.js"></script>
+
   <script>
-    // comportamento do input falso: mostra mensagem temporária ao "executar"
+    // fake terminal input visual behaviour
     const fake = document.getElementById('fake-cmd');
     if (fake) {
       fake.addEventListener('keydown', (e) => {
@@ -95,7 +101,7 @@
           const v = fake.value.trim();
           const out = document.createElement('div');
           out.className = 'cmd-output';
-          out.innerText = v ? `Command not executed (visual demo): ${v}` : 'Pressione algo...';
+          out.innerText = v ? `Command (demo): ${v}` : 'Type help';
           document.querySelector('.terminal-body').insertBefore(out, document.querySelector('.page-content'));
           fake.value = '';
           setTimeout(()=> out.classList.add('faded'), 3000);
