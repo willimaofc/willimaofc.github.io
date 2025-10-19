@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Wilton Lima — Cybersecurity Portfolio"
-subtitle: "Segurança da informação · Pentesting · CTF · Privilege Escalation"
+subtitle: "Read Team | Cybersecurity | Support technician | Osint"
 ---
 
 <div class="hero">
